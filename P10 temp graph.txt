@@ -1,0 +1,25 @@
+#include "dht.h"
+#define dataPin 2
+
+dht DHT;
+int i = 0;
+int temp;
+int hum;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("Ready");
+  delay(5000);
+}
+
+void loop() {
+  int readData = DHT.read11(dataPin);
+  hum = DHT.humidity;
+  temp = DHT.temperature;
+
+  Serial.print(temp); // Print temperature data
+  Serial.print(",");   // Separator
+  Serial.println(hum); // Print humidity data
+
+  delay(1000); // Delay between readings
+}
